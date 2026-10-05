@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethan Samuel — Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F8FB; --card:#FFFFFF; --text:#1C2230; --muted:#6B7280;
+    --accent:#2F6FED; --border:#E6E8EE;
+    --shadow:0 1px 3px rgba(16,24,40,.07), 0 1px 2px rgba(16,24,40,.04);
+  }
+  html[data-theme="dark"]{
+    --bg:#121826; --card:#1B2333; --text:#EDEFF4; --muted:#8C93A6;
+    --accent:#5B9DFF; --border:#2A3348; --shadow:0 1px 3px rgba(0,0,0,.3);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Inter",-apple-system,Segoe UI,sans-serif; line-height:1.6;
+    transition:background .2s ease, color .2s ease;
+  }
+  h1,h2,.logo{font-family:"Poppins",sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+  svg{width:18px; height:18px; display:block;}
+
+  /* nav */
+  nav{display:flex; align-items:center; justify-content:space-between; padding:22px 24px; max-width:980px; margin:0 auto;}
+  .logo{font-weight:700; font-size:1.2rem; color:var(--accent);}
+  .nav-links{display:flex; align-items:center; gap:28px;}
+  .nav-links a{font-weight:500; font-size:.95rem; color:var(--text);}
+  .nav-links a:hover{color:var(--accent);}
+  #theme-toggle{
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--border);
+    background:var(--card); cursor:pointer; display:flex; align-items:center; justify-content:center;
+    color:var(--text); font-size:.95rem;
+  }
+  @media (max-width:560px){ .nav-links{gap:14px; font-size:.85rem;} }
+
+  /* hero */
+  .hero{max-width:720px; margin:64px auto 90px; padding:0 24px; text-align:center;}
+  h1{font-size:2.6rem; font-weight:700; margin:0 0 6px; color:var(--text);}
+  h1 .accent{color:var(--accent);}
+  .role{font-size:1.3rem; font-weight:600; margin:0 0 20px; color:var(--text);}
+  .bio{color:var(--muted); max-width:56ch; margin:0 auto 32px; font-size:1rem;}
+  .hero-actions{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;}
+  .btn{
+    padding:11px 22px; border-radius:7px; font-weight:600; font-size:.95rem;
+    border:1.5px solid var(--accent); color:var(--accent); background:transparent;
+  }
+  .btn:hover{background:var(--accent); color:#fff;}
+  .icon-btn{
+    width:40px; height:40px; border-radius:50%; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; color:var(--text); background:var(--card);
+  }
+  .icon-btn:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* sections */
+  section{max-width:980px; margin:0 auto; padding:10px 24px 80px;}
+  .sec-title{text-align:center; font-size:1.7rem; font-weight:700; margin:0 0 40px; letter-spacing:.02em;}
+
+  /* cards grid */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:22px;}
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:26px 24px; box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .card h3{margin:0 0 10px; font-size:1.08rem;}
+  .card p{color:var(--muted); font-size:.92rem; margin:0 0 16px; flex-grow:1;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;}
+  .tag{font-size:.75rem; padding:3px 9px; border-radius:5px; background:var(--bg); border:1px solid var(--border); color:var(--muted);}
+  .card-links{display:flex; gap:14px; justify-content:center; padding-top:14px; border-top:1px solid var(--border);}
+  .card-links a{color:var(--muted);}
+  .card-links a:hover{color:var(--accent);}
+
+  /* certs: simpler row cards */
+  .cert{display:flex; justify-content:space-between; align-items:center; gap:14px;}
+  .cert-meta{color:var(--muted); font-size:.85rem; margin:0;}
+
+  /* skills */
+  .pills{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:640px; margin:0 auto;}
+  .pill{
+    background:var(--card); border:1px solid var(--border); border-radius:7px;
+    padding:10px 18px; font-weight:500; font-size:.9rem; box-shadow:var(--shadow);
+  }
+
+  /* contact */
+  #contact{text-align:center;}
+  #contact p{color:var(--muted); margin-bottom:26px;}
+
+  footer{text-align:center; padding:30px 24px 50px; color:var(--muted); font-size:.85rem;}
+  footer a{margin:0 10px; color:var(--muted);}
+  footer a:hover{color:var(--accent);}
+
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">ES.</div>
+  <div class="nav-links">
+    <a href="#projects">projects</a>
+    <a href="#skills">skills</a>
+    <a href="#certifications">certifications</a>
+    <a href="#contact">contact</a>
+    <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">◐</button>
+  </div>
+</nav>
+
+<main>
+  <div class="hero">
+    <h1>Hi, I am <span class="accent">Ethan Samuel.</span></h1>
+    <p class="role">An aspiring Cybersecurity Analyst.</p>
+    <p class="bio">
+      Junior at Georgia Gwinnett College, studying BS Information Technology —
+      Systems and Cybersecurity. Working toward identity and access management:
+      how organizations decide who gets into what, and how that gets audited,
+      automated, and defended.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="assets/resume-ethan-samuel.pdf" download>resume</a>
+      <a class="icon-btn" href="https://github.com/ethansamuel71" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.71 5.42-5.28 5.7.42.36.78 1.07.78 2.16v3.2c0 .31.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2 class="sec-title">Projects</h2>
+    <div class="grid" id="project-grid"></div>
+  </section>
+
+  <section id="skills">
+    <h2 class="sec-title">Skills</h2>
+    <ul class="pills" id="skills-list" style="list-style:none; padding:0;"></ul>
+  </section>
+
+  <section id="certifications">
+    <h2 class="sec-title">Certifications</h2>
+    <div class="grid" id="cert-grid"></div>
+  </section>
+
+  <section id="contact">
+    <h2 class="sec-title">Contact</h2>
+    <p>Open to internship and entry-level opportunities in security operations, IT, or IAM.</p>
+    <a class="btn" href="mailto:you@example.com">email me</a>
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/ethansamuel71" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="mailto:you@example.com">Email</a>
+</footer>
+
+<script>
+/* ================================================================
+   EDIT BELOW to add your own projects, certifications, and skills.
+   Copy a block inside the array, change the values, add a comma.
+   "repo" / "demo" / "link" can be an external URL, or a local file
+   you've added to assets/ (e.g. "assets/certs/security-plus.pdf").
+   Leave repo/demo empty ("") to hide that icon on a project card.
+   ================================================================ */
+
+const projects = [
+  {
+    title: "Replace with your project title",
+    desc: "One or two sentences: what you built, what tools you used, what you learned.",
+    tags: ["SIEM", "Linux"],
+    repo: "https://github.com/ethansamuel71/replace-with-repo-name",
+    demo: ""
+  },
+  {
+    title: "Second project placeholder",
+    desc: "Delete this block if you only have one project so far — ship the site early.",
+    tags: ["Python", "AD"],
+    repo: "https://github.com/ethansamuel71",
+    demo: ""
+  }
+];
+
+const certs = [
+  {
+    title: "Replace with certification name",
+    issuer: "Issuing organization",
+    date: "2026",
+    link: "assets/certs/your-certificate.pdf"
+  }
+];
+
+const skills = [
+  "Identity & Access Management", "Active Directory", "SIEM / Log Analysis",
+  "Linux Administration", "Network Fundamentals", "Python", "Incident Response", "Windows Server"
+];
+
+const iconExternal = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg>`;
+const iconGithub = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-2.17c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.71 5.42-5.28 5.7.42.36.78 1.07.78 2.16v3.2c0 .31.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>`;
+
+document.getElementById("project-grid").innerHTML = projects.map(p => `
+  <div class="card">
+    <h3>${p.title}</h3>
+    <p>${p.desc}</p>
+    <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    <div class="card-links">
+      ${p.repo ? `<a href="${p.repo}" target="_blank" rel="noopener" aria-label="Repository">${iconGithub}</a>` : ""}
+      ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener" aria-label="Live demo">${iconExternal}</a>` : ""}
+    </div>
+  </div>`).join("");
+
+document.getElementById("cert-grid").innerHTML = certs.map(c => `
+  <div class="card">
+    <div class="cert">
+      <div>
+        <h3 style="margin-bottom:4px;">${c.title}</h3>
+        <p class="cert-meta">${c.issuer} — ${c.date}</p>
+      </div>
+      <a href="${c.link}" target="_blank" rel="noopener" aria-label="View credential" style="color:var(--muted);">${iconExternal}</a>
+    </div>
+  </div>`).join("");
+
+document.getElementById("skills-list").innerHTML = skills.map(s => `<li class="pill">${s}</li>`).join("");
+
+/* dark mode toggle, remembers choice */
+const root = document.documentElement;
+const toggle = document.getElementById("theme-toggle");
+const saved = localStorage.getItem("theme");
+if (saved) root.setAttribute("data-theme", saved);
+toggle.addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  toggle.setAttribute("aria-pressed", String(next === "dark"));
+});
+</script>
+</body>
+</html>
