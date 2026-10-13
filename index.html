@@ -78,7 +78,7 @@
   .card-links a{color:var(--muted);}
   .card-links a:hover{color:var(--accent);}
 
-  /* horizontal scrolling projects row */
+ /* horizontal scrolling projects row */
 #project-grid{
   display:flex;
   gap:22px;
@@ -87,6 +87,11 @@
   padding:4px 4px 18px;
   scrollbar-width:thin;
   scrollbar-color:var(--accent) var(--border);
+}
+#project-grid .card{
+  flex:0 0 320px;
+  min-width:320px;
+  scroll-snap-align:start;
 }
   
   /* mouse wheel scrolls the projects row sideways */
