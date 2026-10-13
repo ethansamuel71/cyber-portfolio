@@ -83,11 +83,22 @@
   display:flex;
   gap:22px;
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
+  scroll-snap-type:x proximity;
   padding:4px 4px 18px;
   scrollbar-width:thin;
   scrollbar-color:var(--accent) var(--border);
 }
+  
+  /* mouse wheel scrolls the projects row sideways */
+const projectRow = document.getElementById("project-grid");
+projectRow.addEventListener("wheel", (e) => {
+  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // trackpad sideways swipes already work
+  const atStart = projectRow.scrollLeft <= 0 && e.deltaY < 0;
+  const atEnd = projectRow.scrollLeft + projectRow.clientWidth >= projectRow.scrollWidth - 1 && e.deltaY > 0;
+  if (atStart || atEnd) return; // let the page scroll normally at either end
+  e.preventDefault();
+  projectRow.scrollLeft += e.deltaY;
+}, { passive: false });
 #project-grid .card{
   flex:0 0 320px;
   scroll-snap-align:start;
