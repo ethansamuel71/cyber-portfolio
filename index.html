@@ -78,6 +78,21 @@
   .card-links a{color:var(--muted);}
   .card-links a:hover{color:var(--accent);}
 
+  /* horizontal scrolling projects row */
+#project-grid{
+  display:flex;
+  gap:22px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:4px 4px 18px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--accent) var(--border);
+}
+#project-grid .card{
+  flex:0 0 320px;
+  scroll-snap-align:start;
+}
+
   /* certs: simpler row cards */
   .cert{display:flex; justify-content:space-between; align-items:center; gap:14px;}
   .cert-meta{color:var(--muted); font-size:.85rem; margin:0;}
