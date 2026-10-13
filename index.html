@@ -78,36 +78,21 @@
   .card-links a{color:var(--muted);}
   .card-links a:hover{color:var(--accent);}
 
- /* horizontal scrolling projects row */
+  /* horizontal scrolling projects row */
 #project-grid{
   display:flex;
   gap:22px;
   overflow-x:auto;
-  scroll-snap-type:x proximity;
+  scroll-snap-type:x mandatory;
   padding:4px 4px 18px;
   scrollbar-width:thin;
   scrollbar-color:var(--accent) var(--border);
 }
 #project-grid .card{
   flex:0 0 320px;
-  min-width:320px;
   scroll-snap-align:start;
 }
-  
-  /* mouse wheel scrolls the projects row sideways */
-const projectRow = document.getElementById("project-grid");
-projectRow.addEventListener("wheel", (e) => {
-  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // trackpad sideways swipes already work
-  const atStart = projectRow.scrollLeft <= 0 && e.deltaY < 0;
-  const atEnd = projectRow.scrollLeft + projectRow.clientWidth >= projectRow.scrollWidth - 1 && e.deltaY > 0;
-  if (atStart || atEnd) return; // let the page scroll normally at either end
-  e.preventDefault();
-  projectRow.scrollLeft += e.deltaY;
-}, { passive: false });
-#project-grid .card{
-  flex:0 0 320px;
-  scroll-snap-align:start;
-}
+
 
   /* certs: simpler row cards */
   .cert{display:flex; justify-content:space-between; align-items:center; gap:14px;}
@@ -288,6 +273,25 @@ toggle.addEventListener("click", () => {
   localStorage.setItem("theme", next);
   toggle.setAttribute("aria-pressed", String(next === "dark"));
 });
+
+toggle.addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  toggle.setAttribute("aria-pressed", String(next === "dark"));
+});
+
+/* mouse wheel scrolls the projects row sideways */
+const projectRow = document.getElementById("project-grid");
+projectRow.addEventListener("wheel", (e) => {
+  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+  const atStart = projectRow.scrollLeft <= 0 && e.deltaY < 0;
+  const atEnd = projectRow.scrollLeft + projectRow.clientWidth >= projectRow.scrollWidth - 1 && e.deltaY > 0;
+  if (atStart || atEnd) return;
+  e.preventDefault();
+  projectRow.scrollLeft += e.deltaY;
+}, { passive: false });
+  
 </script>
 </body>
 </html>
