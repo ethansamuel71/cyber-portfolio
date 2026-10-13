@@ -279,15 +279,35 @@ toggle.addEventListener("click", () => {
   toggle.setAttribute("aria-pressed", String(next === "dark"));
 });
 
-/* mouse wheel scrolls the projects row sideways */
+/* mouse wheel slides the projects row sideways, smoothly */
 const projectRow = document.getElementById("project-grid");
+let target = projectRow.scrollLeft;
+let animating = false;
+
+function animateRow() {
+  const diff = target - projectRow.scrollLeft;
+  if (Math.abs(diff) <= 1) {
+    projectRow.scrollLeft = target;
+    animating = false;
+    return;
+  }
+  projectRow.scrollLeft += Math.sign(diff) * Math.max(1, Math.abs(diff) * 0.15);
+  requestAnimationFrame(animateRow);
+}
+
 projectRow.addEventListener("wheel", (e) => {
   if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-  const atStart = projectRow.scrollLeft <= 0 && e.deltaY < 0;
-  const atEnd = projectRow.scrollLeft + projectRow.clientWidth >= projectRow.scrollWidth - 1 && e.deltaY > 0;
+  const max = projectRow.scrollWidth - projectRow.clientWidth;
+  if (!animating) target = projectRow.scrollLeft;
+  const atStart = target <= 0 && e.deltaY < 0;
+  const atEnd = target >= max - 1 && e.deltaY > 0;
   if (atStart || atEnd) return;
   e.preventDefault();
-  projectRow.scrollLeft += e.deltaY;
+  target = Math.max(0, Math.min(max, target + e.deltaY));
+  if (!animating) {
+    animating = true;
+    requestAnimationFrame(animateRow);
+  }
 }, { passive: false });
   
 </script>
